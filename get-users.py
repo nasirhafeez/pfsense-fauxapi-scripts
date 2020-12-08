@@ -18,4 +18,4 @@ response_data = {}
 for user in config['system']['user']:
     response_data[user['name']] = user
     del(response_data[user['name']]['name'])
-print(response_data[user['name']])
+print(response_data)
