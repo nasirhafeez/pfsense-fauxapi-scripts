@@ -11,4 +11,4 @@ pip3 install python-dotenv
 
 To install Faux API on pfSense use the procedure given [here](https://github.com/ndejong/pfsense_fauxapi#installation).
 
-Copy and rename the .env.example file to `.env` and set the values of the given environment variables in it.
+Copy and rename the `.env.example` file to `.env` and set the values of the given environment variables in it.
