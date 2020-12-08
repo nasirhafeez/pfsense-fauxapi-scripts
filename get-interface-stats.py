@@ -8,8 +8,9 @@ hostip = os.getenv("HOST_IP")
 apikey = os.getenv("API_KEY")
 apisecret = os.getenv("API_SECRET")
 
+PfsenseFauxapi = PfsenseFauxapi(hostip, apikey, apisecret)
+
 ########## Script starts here ##########
 
-PfsenseFauxapi = PfsenseFauxapi(hostip, apikey, apisecret)
 stats = PfsenseFauxapi.interface_stats('em0')
 pprint.pprint(stats)
