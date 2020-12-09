@@ -1,4 +1,4 @@
-# pfSense Faux-API Scripts
+# pfSense FauxAPI Scripts
 
 This is a collection of Python scripts for interacting with [pfSense FauxAPI](https://github.com/ndejong/pfsense_fauxapi) to automate some common pfSense functions. It leverages FauxAPI's [python client](https://github.com/ndejong/pfsense_fauxapi_client_python).
 
