@@ -1,7 +1,7 @@
 import pprint, sys, os
 from PfsenseFauxapi.PfsenseFauxapi import PfsenseFauxapi
 from dotenv import load_dotenv
-from usergroup-management import *
+import usergroup-management
 
 # load_dotenv()
 
