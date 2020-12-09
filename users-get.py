@@ -24,5 +24,5 @@ import usergroup_management
 #     del(response_data[user['name']]['name'])
 # pprint.pprint(response_data)
 
-test = get_users()
-pprint.pprint(test)
+test = UserGroupManagementFauxapi()
+#pprint.pprint(test)
