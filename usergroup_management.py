@@ -204,6 +204,27 @@ class UserGroupManagementFauxapi():
 
         return user
 
+    def remove_ovpn_csc(self, username):
+        self._reload_system_config()
+
+        user_index, user = self._get_csc('openvpn-csc', username)
+        if user_index is None:
+            raise UserGroupManagementFauxapiException('user does not exist', username)
+        else return user_index
+
+        # patch_openvpn_csc = {
+        #     'openvpn': {
+        #         'openvpn-csc': self.system_config['openvpn']['openvpn-csc']
+        #     }
+        # }
+        # del(patch_openvpn_csc['openvpn']['openvpn-csc'][user_index])
+
+        # response = self.FauxapiLib.config_patch(patch_openvpn_csc)
+        # if response['message'] != 'ok':
+        #     raise UserGroupManagementFauxapiException('unable to remove user', response['message'])
+
+        # return user
+
     # group functions
     # =========================================================================
 
@@ -315,6 +336,21 @@ class UserGroupManagementFauxapi():
         entity_index = 0
         for entity_data in self.system_config['system'][entity_type]:
             if entity_data['name'] == entity_name:
+                entity = entity_data
+                break
+            entity_index += 1
+
+        if entity is None:
+            return None, None
+
+        return entity_index, entity
+
+        def _get_csc(self, entity_type, entity_name):
+
+        entity = None
+        entity_index = 0
+        for entity_data in self.system_config['openvpn'][entity_type]:
+            if entity_data['common_name'] == entity_name:
                 entity = entity_data
                 break
             entity_index += 1

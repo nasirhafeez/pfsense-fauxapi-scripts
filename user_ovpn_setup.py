@@ -3,9 +3,9 @@ import pprint
 
 UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecret)
 
-######################### User Create Script #########################
+######################### OpenVPN User Setup #########################
 #
-# This script will create a new pfSense user
+# This script will create a static IP binding for OpenVPN user
 # 
 # It will be run with 3 command line arguments: username, static ip,
 # subnet (in dotted decimal notation, like 255.255.255.0 for /24)
