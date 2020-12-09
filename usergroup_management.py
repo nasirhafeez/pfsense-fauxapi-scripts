@@ -163,6 +163,15 @@ class UserGroupManagementFauxapi():
     # openvpn functions
     # =========================================================================
 
+    def get_ovpn_users(self):
+        self._reload_system_config()
+
+        response_data = {}
+        for user in self.system_config['openvpn']['openvpn-csc']:
+            response_data[user['name']] = user
+            del(response_data[user['name']]['common_name'])
+        return response_data
+
     def add_ovpn_csc(self, username, ip, subnet):
         self._reload_system_config()
 
