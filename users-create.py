@@ -5,8 +5,6 @@ UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecre
 
 # add_user
 user = UGMF.add_user(sys.argv[1])
-#print(json.dumps(user))
-pprint.pprint(user)
 
 # manage_user attributes
 attributes = {
@@ -14,5 +12,5 @@ attributes = {
     'password': sys.argv[2],
 }
 user = UGMF.manage_user(sys.argv[1], attributes)
-#print(json.dumps(user))
+
 pprint.pprint(user)
