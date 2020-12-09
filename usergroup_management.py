@@ -210,21 +210,19 @@ class UserGroupManagementFauxapi():
         user_index, user = self._get_csc('openvpn-csc', username)
         if user_index is None:
             raise UserGroupManagementFauxapiException('user does not exist', username)
-        else:
-            return user_index
 
-        # patch_openvpn_csc = {
-        #     'openvpn': {
-        #         'openvpn-csc': self.system_config['openvpn']['openvpn-csc']
-        #     }
-        # }
-        # del(patch_openvpn_csc['openvpn']['openvpn-csc'][user_index])
+        patch_openvpn_csc = {
+            'openvpn': {
+                'openvpn-csc': self.system_config['openvpn']['openvpn-csc']
+            }
+        }
+        del(patch_openvpn_csc['openvpn']['openvpn-csc'][user_index])
 
-        # response = self.FauxapiLib.config_patch(patch_openvpn_csc)
-        # if response['message'] != 'ok':
-        #     raise UserGroupManagementFauxapiException('unable to remove user', response['message'])
+        response = self.FauxapiLib.config_patch(patch_openvpn_csc)
+        if response['message'] != 'ok':
+            raise UserGroupManagementFauxapiException('unable to remove user', response['message'])
 
-        # return user
+        return user
 
     # group functions
     # =========================================================================
