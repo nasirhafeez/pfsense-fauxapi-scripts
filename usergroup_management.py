@@ -179,6 +179,10 @@ class UserGroupManagementFauxapi():
         if user_index is None:
             raise UserGroupManagementFauxapiException('user does not exist', username)
 
+        user_index, user = self._get_csc('openvpn-csc', username)
+        if user_index is not None:
+            raise UserGroupManagementFauxapiException('user already has static ip binding', username)
+
         command = "ifconfig-push " + ip + " " + subnet + ";"
 
         user = {
