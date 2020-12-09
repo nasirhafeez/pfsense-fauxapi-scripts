@@ -26,5 +26,4 @@ from usergroup_management import *
 
 UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecret)
 users = UGMF.get_users()
-print(json.dumps(users))
-#pprint.pprint(test)
+pprint.pprint(users)
