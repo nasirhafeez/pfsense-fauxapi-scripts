@@ -210,7 +210,8 @@ class UserGroupManagementFauxapi():
         user_index, user = self._get_csc('openvpn-csc', username)
         if user_index is None:
             raise UserGroupManagementFauxapiException('user does not exist', username)
-        else return user_index
+        else:
+            return user_index
 
         # patch_openvpn_csc = {
         #     'openvpn': {
