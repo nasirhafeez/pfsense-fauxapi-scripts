@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 sys.path.append(".")
 
-import usergroup_management
+from usergroup_management import *
 
 # load_dotenv()
 
