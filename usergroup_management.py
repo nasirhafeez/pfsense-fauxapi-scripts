@@ -171,9 +171,22 @@ class UserGroupManagementFauxapi():
             raise UserGroupManagementFauxapiException('user does not exist', username)
 
         user = {
+            'server_list': '',
             'custom_options': 'ifconfig-push 172.24.42.150 255.255.255.0;',
             'common_name': username,
+            'block': '',
+            'description': '',
+            'tunnel_network': '',
+            'tunnel_networkv6': '',
+            'local_network': '',
+            'local_networkv6': '',
+            'remote_network': '',
+            'remote_networkv6': '',
+            'gwredir': '',
+            'push_reset': '',
+            'netbios_enable': '',
             'netbios_ntype': '0',
+            'netbios_scope': '',
         }
 
         patch_openvpn_csc = {
