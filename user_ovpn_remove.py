@@ -12,6 +12,6 @@ UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecre
 # python3 user_ovpn_remove.py username
 # 
 
-user = UGMF.remove_ovpn_csc('test5')
+user = UGMF.remove_ovpn_csc('test')
 
 pprint.pprint(user)
