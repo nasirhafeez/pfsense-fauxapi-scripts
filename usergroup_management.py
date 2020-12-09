@@ -176,14 +176,14 @@ class UserGroupManagementFauxapi():
             'netbios_ntype': '0',
         }
 
-        patch_openvpn_openvpn-csc = {
+        patch_openvpn_csc = {
             'openvpn': {
                 'openvpn-csc': self.system_config['openvpn']['openvpn-csc']
             }
         }
-        patch_openvpn_openvpn-csc['openvpn']['openvpn-csc'].append(user)
+        patch_openvpn_csc['openvpn']['openvpn-csc'].append(user)
 
-        response = self.FauxapiLib.config_patch(patch_openvpn_openvpn-csc)
+        response = self.FauxapiLib.config_patch(patch_openvpn_csc)
         if response['message'] != 'ok':
             raise UserGroupManagementFauxapiException('unable to add openvpn user csc', response['message'])
 
