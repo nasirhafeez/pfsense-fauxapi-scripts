@@ -160,6 +160,35 @@ class UserGroupManagementFauxapi():
 
         return user
 
+    # openvpn functions
+    # =========================================================================
+
+    def add_ovpn_csc(self, username):
+        self._reload_system_config()
+
+        user_index, user = self._get_entity('user', username)
+        if user_index is None:
+            raise UserGroupManagementFauxapiException('user does not exist', username)
+
+        user = {
+            'custom_options': 'ifconfig-push 172.24.42.150 255.255.255.0;',
+            'common_name': username,
+            'netbios_ntype': '0',
+        }
+
+        patch_openvpn_openvpn-csc = {
+            'openvpn': {
+                'openvpn-csc': self.system_config['openvpn']['openvpn-csc']
+            }
+        }
+        patch_openvpn_openvpn-csc['openvpn']['openvpn-csc'].append(user)
+
+        response = self.FauxapiLib.config_patch(patch_openvpn_openvpn-csc)
+        if response['message'] != 'ok':
+            raise UserGroupManagementFauxapiException('unable to add openvpn user csc', response['message'])
+
+        return user
+
     # group functions
     # =========================================================================
 
