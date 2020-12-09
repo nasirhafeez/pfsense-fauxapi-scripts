@@ -24,5 +24,7 @@ import usergroup_management
 #     del(response_data[user['name']]['name'])
 # pprint.pprint(response_data)
 
-test = UserGroupManagementFauxapi()
+UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecret)
+users = UGMF.get_users()
+print(json.dumps(users))
 #pprint.pprint(test)
