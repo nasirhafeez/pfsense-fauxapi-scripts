@@ -1,21 +1,20 @@
-import pprint, sys, os
-from PfsenseFauxapi.PfsenseFauxapi import PfsenseFauxapi
-from dotenv import load_dotenv
+from usergroup_management import *
+import pprint
 
-load_dotenv()
+UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecret)
 
-hostip = os.getenv("HOST_IP")
-apikey = os.getenv("API_KEY")
-apisecret = os.getenv("API_SECRET")
 
-PfsenseFauxapi = PfsenseFauxapi(hostip, apikey, apisecret)
+# add_user
+user = UGMF.add_user('test1')
+print(json.dumps(user))
 
-########## Script starts here ##########
+# manage_user attributes
+attributes = {
+    'disabled': False,
+    'password': 'test123',
+}
+user = UGMF.manage_user('test1', attributes)
+print(json.dumps(user))
 
-config = PfsenseFauxapi.config_get()
 
-response_data = {}
-for user in config['system']['user']:
-    response_data[user['name']] = user
-    del(response_data[user['name']]['name'])
-pprint.pprint(response_data)
+#pprint.pprint(users)
