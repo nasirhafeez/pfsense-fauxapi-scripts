@@ -1,6 +1,6 @@
-import pprint
+import pprint, sys, os
 
-sys.path.append(".")
+#sys.path.append(".")
 
 from usergroup_management import *
 
