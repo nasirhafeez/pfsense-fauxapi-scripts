@@ -346,7 +346,7 @@ class UserGroupManagementFauxapi():
 
         return entity_index, entity
 
-        def _get_csc(self, entity_type, entity_name):
+    def _get_csc(self, entity_type, entity_name):
 
         entity = None
         entity_index = 0
