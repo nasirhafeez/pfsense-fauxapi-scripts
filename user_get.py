@@ -4,8 +4,8 @@ import pprint
 UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecret)
 
 ###################### User Get Script ######################
-# This script will get and print the list of
-# pfSense users
+#
+# This script will get and print the list of pfSense users
 # 
 # It will be run without any command line arguments:
 #

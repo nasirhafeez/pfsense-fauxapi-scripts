@@ -4,6 +4,7 @@ import pprint
 UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecret)
 
 ######################### User Delete Script #########################
+#
 # This script will delete an existing pfSense user
 # 
 # It will be run with 1 command line argument: username

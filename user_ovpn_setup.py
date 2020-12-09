@@ -4,14 +4,15 @@ import pprint
 UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecret)
 
 ######################### User Create Script #########################
+#
 # This script will create a new pfSense user
 # 
-# It will be run with 2 command line arguments: username, password
+# It will be run with 3 command line arguments: username, static ip,
+# subnet (in dotted decimal notation, like 255.255.255.0 for /24)
 #
-# python3 user_create.py username password
+# python3 user_ovpn_setup.py username ip subnet
 # 
 
-# add_user
-user = UGMF.add_ovpn_csc('test5', '172.24.42.150', '255.255.255.0')
+user = UGMF.add_ovpn_csc(sys.argv[1], sys.argv[2], sys.argv[3])
 
 pprint.pprint(user)

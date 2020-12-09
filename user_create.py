@@ -4,6 +4,7 @@ import pprint
 UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecret)
 
 ######################### User Create Script #########################
+#
 # This script will create a new pfSense user
 # 
 # It will be run with 2 command line arguments: username, password
