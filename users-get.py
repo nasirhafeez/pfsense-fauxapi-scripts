@@ -1,6 +1,9 @@
 import pprint, sys, os
 from PfsenseFauxapi.PfsenseFauxapi import PfsenseFauxapi
 from dotenv import load_dotenv
+
+sys.path.append(".")
+
 import usergroup-management
 
 # load_dotenv()
