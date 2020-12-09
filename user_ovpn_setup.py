@@ -12,6 +12,6 @@ UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecre
 # 
 
 # add_user
-user = UGMF.add_ovpn_csc('test5')
+user = UGMF.add_ovpn_csc('test5', '172.24.42.150', '255.255.255.0')
 
 pprint.pprint(user)

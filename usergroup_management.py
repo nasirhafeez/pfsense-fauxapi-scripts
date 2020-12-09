@@ -163,16 +163,18 @@ class UserGroupManagementFauxapi():
     # openvpn functions
     # =========================================================================
 
-    def add_ovpn_csc(self, username):
+    def add_ovpn_csc(self, username, ip, subnet):
         self._reload_system_config()
 
         user_index, user = self._get_entity('user', username)
         if user_index is None:
             raise UserGroupManagementFauxapiException('user does not exist', username)
 
+        command = "ifconfig-push " + ip + " " + subnet + ";"
+
         user = {
             'server_list': '',
-            'custom_options': 'ifconfig-push 172.24.42.150 255.255.255.0;',
+            'custom_options': command,
             'common_name': username,
             'block': '',
             'description': '',
