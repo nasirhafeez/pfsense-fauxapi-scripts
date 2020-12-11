@@ -15,6 +15,8 @@ PfsenseFauxapi = PfsenseFauxapi(hostip, apikey, apisecret)
 
 ########## Script starts here ##########
 
-stats = PfsenseFauxapi.function_call('function: get_services')
+stats = PfsenseFauxapi.function_call({
+    'function': 'get_services',
+})
 
 pprint.pprint(stats)
