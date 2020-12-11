@@ -16,7 +16,7 @@ PfsenseFauxapi = PfsenseFauxapi(hostip, apikey, apisecret)
 ########## Script starts here ##########
 
 stats = PfsenseFauxapi.function_call({
-    'function': 'get_services',
+    'function': 'sg_reconfigure',
 })
 
 pprint.pprint(stats)
