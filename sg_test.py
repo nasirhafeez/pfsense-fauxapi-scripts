@@ -15,5 +15,8 @@ PfsenseFauxapi = PfsenseFauxapi(hostip, apikey, apisecret)
 
 ########## Script starts here ##########
 
-stats = PfsenseFauxapi.interface_stats('em0')
+#stats = PfsenseFauxapi.interface_stats('em0')
+
+stats = PfsenseFauxapi.config_reload()
+
 pprint.pprint(stats)
