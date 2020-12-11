@@ -15,8 +15,6 @@ PfsenseFauxapi = PfsenseFauxapi(hostip, apikey, apisecret)
 
 ########## Script starts here ##########
 
-#stats = PfsenseFauxapi.interface_stats('em0')
-
-stats = ifconfig
+stats = PfsenseFauxapi.function_call(get_services())
 
 pprint.pprint(stats)
