@@ -249,6 +249,15 @@ class UserGroupManagementFauxapi():
             del(response_data[cat['name']]['name'])
         return response_data
 
+    def get_sg_groupacl(self):
+        self._reload_system_config()
+
+        response_data = {}
+        for cat in self.system_config['installedpackages']['squidguardacl']['config']:
+            response_data[cat['name']] = cat
+            del(response_data[cat['name']]['name'])
+        return response_data
+
     def add_sg_category(self, cat_name):
         self._reload_system_config()
 
