@@ -7,9 +7,9 @@ UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecre
 #
 # This script will delete a Group ACL in SquidGuard
 # 
-# It will be run with 1 command line argument: gacl_name
+# It will be run with 1 command line argument: group_acl_name
 #
-# python3 remove_sg_groupacl.py gacl_name
+# python3 remove_sg_groupacl.py group_acl_name
 # 
 
 user = UGMF.remove_sg_groupacl(sys.argv[1])
