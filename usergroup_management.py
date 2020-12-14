@@ -240,7 +240,7 @@ class UserGroupManagementFauxapi():
     # squidguard functions
     # =========================================================================
 
-    def sg_get_category(self):
+    def get_sg_category(self):
         self._reload_system_config()
 
         response_data = {}
@@ -249,7 +249,7 @@ class UserGroupManagementFauxapi():
             del(response_data[cat['name']]['name'])
         return response_data
 
-    def sg_add_category(self, cat_name):
+    def add_sg_category(self, cat_name):
         self._reload_system_config()
 
         cat_index, cat = self._get_entity_3('installedpackages', 'squidguarddest', 'config', 'name', cat_name)
@@ -280,6 +280,28 @@ class UserGroupManagementFauxapi():
         response = self.FauxapiLib.config_patch(patch_sg_category)
         if response['message'] != 'ok':
             raise UserGroupManagementFauxapiException('unable to add squidguard category', response['message'])
+
+        return user
+
+    def remove_sg_category(self, cat_name):
+        self._reload_system_config()
+
+        cat_index, cat = self._get_entity_3('installedpackages', 'squidguarddest', 'config', 'name', cat_name)
+        if cat_index is None:
+            raise UserGroupManagementFauxapiException('category does not exist', cat)
+
+        patch_sg_category = {
+            'installedpackages': {
+                'squidguarddest': {
+                    'config': self.system_config['installedpackages']['squidguarddest']['config']
+                }
+            }
+        }
+        del(patch_sg_category['installedpackages']['squidguarddest']['config'][user_index])
+
+        response = self.FauxapiLib.config_patch(patch_sg_category)
+        if response['message'] != 'ok':
+            raise UserGroupManagementFauxapiException('unable to remove category', response['message'])
 
         return user
 

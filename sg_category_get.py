@@ -3,15 +3,15 @@ import pprint
 
 UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecret)
 
-######################### SquidGuard Category Setup #########################
+######################### SquidGuard Category Get Setup #########################
 #
-# This script setup or modify a category in SquidGuard
+# This script will get and print the list of categories in SquidGuard
 # 
 # It will be run without any command line arguments:
 #
-# python3 sg_get_category.py
+# python3 get_sg_category.py
 # 
 
-user = UGMF.sg_get_category()
+user = UGMF.get_sg_category()
 
 pprint.pprint(user)
