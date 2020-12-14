@@ -292,7 +292,7 @@ class UserGroupManagementFauxapi():
 
         return user
 
-    def add_sg_groupacl(self, gacl_name):
+    def add_sg_groupacl(self, gacl_name, source_ip):
         self._reload_system_config()
 
         gacl_index, gacl = self._get_entity_3('installedpackages', 'squidguardacl', 'config', 'name', gacl_name)
@@ -302,7 +302,7 @@ class UserGroupManagementFauxapi():
         user = {
             'disabled': '',
             'name': gacl_name,
-            'source': '172.24.42.150',
+            'source': source_ip,
             'time': '',
             'dest': 'global_whitelist !test_blacklist2 all [ all]',
             'notallowingip': 'on',

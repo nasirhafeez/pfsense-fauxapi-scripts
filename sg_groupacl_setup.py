@@ -7,11 +7,11 @@ UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecre
 #
 # This script will setup or modify a Group ACL in SquidGuard
 # 
-# It will be run with 1 command line argument: group_acl_name
+# It will be run with 2 command line arguments: group_acl_name source_ip
 #
-# python3 add_sg_groupacl.py group_acl_name
+# python3 add_sg_groupacl.py group_acl_name source_ip
 # 
 
-user = UGMF.add_sg_groupacl(sys.argv[1])
+user = UGMF.add_sg_groupacl(sys.argv[1], sys.argv[2])
 
 pprint.pprint(user)
