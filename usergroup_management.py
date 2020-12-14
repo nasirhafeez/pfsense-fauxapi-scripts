@@ -292,6 +292,45 @@ class UserGroupManagementFauxapi():
 
         return user
 
+    def add_sg_groupacl(self, gacl_name):
+        self._reload_system_config()
+
+        gacl_index, gacl = self._get_entity_3('installedpackages', 'squidguardacl', 'config', 'name', gacl_name)
+        if gacl_index is not None:
+            raise UserGroupManagementFauxapiException('group acl already exists', gacl)
+
+        user = {
+            'disabled': '',
+            'name': gacl_name,
+            'source': '172.24.42.150',
+            'time': '',
+            'dest': 'global_whitelist !test_blacklist2 all [ all]',
+            'notallowingip': 'on',
+            'redirect_mode': 'rmod_none',
+            'redirect': '',
+            'safesearch': '',
+            'rewrite': '',
+            'overrewrite': '',
+            'description': '',
+            'enablelog': 'on',
+        }
+
+        patch_sg_groupacl = {
+            'installedpackages': {
+                'squidguardacl': {
+                    'config': self.system_config['installedpackages']['squidguardacl']['config']
+                }
+            }
+        }
+
+        patch_sg_groupacl['installedpackages']['squidguardacl']['config'].append(user)
+
+        response = self.FauxapiLib.config_patch(patch_sg_groupacl)
+        if response['message'] != 'ok':
+            raise UserGroupManagementFauxapiException('unable to add squidguard group acl', response['message'])
+
+        return user
+
     def remove_sg_category(self, cat_name):
         self._reload_system_config()
 
