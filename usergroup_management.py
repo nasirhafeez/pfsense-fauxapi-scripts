@@ -357,6 +357,28 @@ class UserGroupManagementFauxapi():
 
         return cat
 
+    def remove_sg_groupacl(self, gacl_name):
+        self._reload_system_config()
+
+        gacl_index, gacl = self._get_entity_3('installedpackages', 'squidguardacl', 'config', 'name', gacl_name)
+        if gacl_index is None:
+            raise UserGroupManagementFauxapiException('group acl does not exist', gacl)
+
+        patch_sg_groupacl = {
+            'installedpackages': {
+                'squidguardacl': {
+                    'config': self.system_config['installedpackages']['squidguardacl']['config']
+                }
+            }
+        }
+        del(patch_sg_groupacl['installedpackages']['squidguardacl']['config'][gacl_index])
+
+        response = self.FauxapiLib.config_patch(patch_sg_groupacl)
+        if response['message'] != 'ok':
+            raise UserGroupManagementFauxapiException('unable to remove category', response['message'])
+
+        return gacl
+
     # group functions
     # =========================================================================
 
