@@ -299,6 +299,10 @@ class UserGroupManagementFauxapi():
         if gacl_index is not None:
             raise UserGroupManagementFauxapiException('group acl already exists', gacl)
 
+        gacl_index, gacl = self._get_entity_3('installedpackages', 'squidguardacl', 'config', 'source', source_ip)
+        if gacl_index is not None:
+            raise UserGroupManagementFauxapiException('source ip already exists', gacl)
+
         user = {
             'disabled': '',
             'name': gacl_name,
