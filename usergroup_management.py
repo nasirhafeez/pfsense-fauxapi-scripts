@@ -297,7 +297,7 @@ class UserGroupManagementFauxapi():
                 }
             }
         }
-        del(patch_sg_category['installedpackages']['squidguarddest']['config'][user_index])
+        del(patch_sg_category['installedpackages']['squidguarddest']['config'][cat_index])
 
         response = self.FauxapiLib.config_patch(patch_sg_category)
         if response['message'] != 'ok':
