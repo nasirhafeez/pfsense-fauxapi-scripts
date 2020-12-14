@@ -303,7 +303,7 @@ class UserGroupManagementFauxapi():
         if response['message'] != 'ok':
             raise UserGroupManagementFauxapiException('unable to remove category', response['message'])
 
-        return user
+        return cat
 
     # group functions
     # =========================================================================
