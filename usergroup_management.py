@@ -237,6 +237,50 @@ class UserGroupManagementFauxapi():
 
         return user
 
+    # squidguard functions
+    # =========================================================================
+
+    def sg_category(self):
+        self._reload_system_config()
+
+        # user_index, user = self._get_entity('user', username)
+        # if user_index is None:
+        #     raise UserGroupManagementFauxapiException('user does not exist', username)
+
+        # user_index, user = self._get_csc('openvpn-csc', username)
+        # if user_index is not None:
+        #     raise UserGroupManagementFauxapiException('user already has static ip binding', username)
+
+        domain_list = "cnn.com github.com twitter.com"
+
+        user = {
+            'name': 'testapi',
+            'domains': domain_list,
+            'urls': '',
+            'expressions': '',
+            'redirect_mode': 'rmod_none',
+            'redirect': '',
+            'description': '',
+            'enablelog': '',
+        }
+
+        patch_sg_category = {
+            'installedpackages': {
+                'squidguarddest': {
+                    'config': self.system_config['installedpackages']['squidguarddest']['config']
+                }
+            }
+        }
+
+        patch_sg_category['installedpackages']['squidguarddest']['config'].append(user)
+
+        response = self.FauxapiLib.config_patch(patch_sg_category)
+        if response['message'] != 'ok':
+            raise UserGroupManagementFauxapiException('unable to add squidguard category', response['message'])
+
+        return user
+
+
     # group functions
     # =========================================================================
 
