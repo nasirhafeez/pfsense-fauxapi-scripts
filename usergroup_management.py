@@ -251,17 +251,17 @@ class UserGroupManagementFauxapi():
         # if user_index is not None:
         #     raise UserGroupManagementFauxapiException('user already has static ip binding', username)
 
-        domain_list = "cnn.com github.com twitter.com"
+        #domain_list = "cnn.com github.com twitter.com"
 
         user = {
-            'name': 'testapi',
-            'domains': domain_list,
+            'name': 'testapi2',
+            'domains': 'cnn.com github.com twitter.com',
             'urls': '',
             'expressions': '',
             'redirect_mode': 'rmod_none',
             'redirect': '',
             'description': '',
-            'enablelog': '',
+            'enablelog': 'on',
         }
 
         patch_sg_category = {
