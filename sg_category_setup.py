@@ -5,11 +5,11 @@ UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecre
 
 ######################### SquidGuard Category Setup #########################
 #
-# This script setup or modify a category in SquidGuard
+# This script will setup or modify a category in SquidGuard
 # 
-# It will be run without any command line arguments:
+# It will be run without 1 command line argument: category
 #
-# python3 sg_category.py
+# python3 sg_add_category.py category
 # 
 
 user = UGMF.sg_add_category(sys.argv[1])

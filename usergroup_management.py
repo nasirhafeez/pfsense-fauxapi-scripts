@@ -240,6 +240,15 @@ class UserGroupManagementFauxapi():
     # squidguard functions
     # =========================================================================
 
+    def sg_get_category(self):
+        self._reload_system_config()
+
+        response_data = {}
+        for cat in self.system_config['installedpackages']['squidguarddest']['config']:
+            response_data[cat['name']] = cat
+            del(response_data[cat['name']]['name'])
+        return response_data
+
     def sg_add_category(self, cat_name):
         self._reload_system_config()
 
