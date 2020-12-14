@@ -258,7 +258,7 @@ class UserGroupManagementFauxapi():
             del(response_data[cat['name']]['name'])
         return response_data
 
-    def add_sg_category(self, cat_name):
+    def add_sg_category(self, cat_name, domain_list):
         self._reload_system_config()
 
         cat_index, cat = self._get_entity_3('installedpackages', 'squidguarddest', 'config', 'name', cat_name)
@@ -267,7 +267,7 @@ class UserGroupManagementFauxapi():
 
         user = {
             'name': cat_name,
-            'domains': 'cnn.com github.com twitter.com',
+            'domains': domain_list,
             'urls': '',
             'expressions': '',
             'redirect_mode': 'rmod_none',
