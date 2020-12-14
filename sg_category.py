@@ -12,6 +12,6 @@ UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecre
 # python3 sg_category.py
 # 
 
-user = UGMF.sg_category()
+user = UGMF.sg_category('testapi2')
 
 pprint.pprint(user)

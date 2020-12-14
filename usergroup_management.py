@@ -240,21 +240,19 @@ class UserGroupManagementFauxapi():
     # squidguard functions
     # =========================================================================
 
-    def sg_category(self):
+    def sg_category(self, cat_name):
         self._reload_system_config()
 
         # user_index, user = self._get_entity('user', username)
         # if user_index is None:
         #     raise UserGroupManagementFauxapiException('user does not exist', username)
 
-        # user_index, user = self._get_csc('openvpn-csc', username)
-        # if user_index is not None:
-        #     raise UserGroupManagementFauxapiException('user already has static ip binding', username)
-
-        #domain_list = "cnn.com github.com twitter.com"
+        cat_index, cat = self._get_entity_3('installedpackages', 'squidguarddest', 'config', 'name', cat_name)
+        if cat_index is not None:
+            raise UserGroupManagementFauxapiException('category already exists', cat)
 
         user = {
-            'name': 'testapi2',
+            'name': cat_name,
             'domains': 'cnn.com github.com twitter.com',
             'urls': '',
             'expressions': '',
@@ -407,6 +405,21 @@ class UserGroupManagementFauxapi():
         entity_index = 0
         for entity_data in self.system_config['openvpn'][entity_type]:
             if entity_data['common_name'] == entity_name:
+                entity = entity_data
+                break
+            entity_index += 1
+
+        if entity is None:
+            return None, None
+
+        return entity_index, entity
+
+    def _get_entity_3(self, entity_l1, entity_l2, entity_l3, entity_label, entity_name):
+
+        entity = None
+        entity_index = 0
+        for entity_data in self.system_config[entity_l1][entity_l2][entity_l3]:
+            if entity_data[entity_label] == entity_name:
                 entity = entity_data
                 break
             entity_index += 1
