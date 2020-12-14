@@ -240,12 +240,8 @@ class UserGroupManagementFauxapi():
     # squidguard functions
     # =========================================================================
 
-    def sg_category(self, cat_name):
+    def sg_add_category(self, cat_name):
         self._reload_system_config()
-
-        # user_index, user = self._get_entity('user', username)
-        # if user_index is None:
-        #     raise UserGroupManagementFauxapiException('user does not exist', username)
 
         cat_index, cat = self._get_entity_3('installedpackages', 'squidguarddest', 'config', 'name', cat_name)
         if cat_index is not None:
@@ -277,7 +273,6 @@ class UserGroupManagementFauxapi():
             raise UserGroupManagementFauxapiException('unable to add squidguard category', response['message'])
 
         return user
-
 
     # group functions
     # =========================================================================
