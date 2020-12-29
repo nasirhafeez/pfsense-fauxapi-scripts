@@ -277,13 +277,26 @@ class UserGroupManagementFauxapi():
         if cat_index is not None:
             raise UserGroupManagementFauxapiException('category already exists', cat)
 
+        # If redirect is not required use this code:
+
+        # user = {
+        #     'name': cat_name,
+        #     'domains': domain_list,
+        #     'urls': '',
+        #     'expressions': '',
+        #     'redirect_mode': 'rmod_none',
+        #     'redirect': '',
+        #     'description': '',
+        #     'enablelog': 'on',
+        # }
+
         user = {
             'name': cat_name,
             'domains': domain_list,
             'urls': '',
             'expressions': '',
-            'redirect_mode': 'rmod_none',
-            'redirect': '',
+            'redirect_mode': 'rmod_ext_mov',
+            'redirect': 'http://api.kinetworking.com/blocked?JNI_URL=%u&amp;JNI_SRCIP=%a',
             'description': '',
             'enablelog': 'on',
         }
