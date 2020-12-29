@@ -237,6 +237,15 @@ class UserGroupManagementFauxapi():
 
         return user
 
+    def ovpn_resync(self):
+        self._reload_system_config()
+
+        response - self.FauxapiLib.function_call({
+            'function': 'discover_last_backup'
+        })
+
+        return response
+
     # squidguard functions
     # =========================================================================
 

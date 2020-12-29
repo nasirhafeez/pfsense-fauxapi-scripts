@@ -3,27 +3,14 @@ import pprint
 
 UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecret)
 
-######################### OpenVPN User Setup #########################
+########################## OpenVPN Resync Script ##########################
 #
-# This script will create a static IP binding for OpenVPN user
+# This script will resync OpenVPN users' static IP bindings
 # 
-# It will be run with 3 command line arguments: username, static ip,
-# subnet (in dotted decimal notation, like 255.255.255.0 for /24)
+# It will be run without any command line arguments:
 #
-# python3 user_ovpn_setup.py username ip subnet
+# python3 user_ovpn_get.py
 # 
 
-# user = UGMF.function_call({
-#         'function': 'openvpn_resync_csc_all'
-#     }
-#     )
-
-
-print(json.dumps(
-    UGMF.function_call({
-        'function': 'discover_last_backup'
-    }
-)))
-
-
-# pprint.pprint(user)
+users = UGMF.ovpn_resync()
+pprint.pprint(users)
