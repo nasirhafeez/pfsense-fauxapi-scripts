@@ -241,7 +241,7 @@ class UserGroupManagementFauxapi():
         self._reload_system_config()
 
         response = self.FauxapiLib.function_call({
-            'function': 'discover_last_backup'
+            'function': 'openvpn_resync_csc_all'
         })
 
         return response
