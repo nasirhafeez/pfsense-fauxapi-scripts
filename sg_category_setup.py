@@ -7,7 +7,7 @@ UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecre
 #
 # This script will setup or modify a category in SquidGuard
 # 
-# It will be run with 1 command line argument: category domain_list
+# It will be run with 2 command line argument: category_name domain_list
 #
 # python3 add_sg_category.py category "domain list e.g cnn.com github.com twitter.com"
 # 
