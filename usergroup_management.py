@@ -244,6 +244,9 @@ class UserGroupManagementFauxapi():
             'function': 'openvpn_resync_csc_all'
         })
 
+        if response['message'] != 'ok':
+            raise UserGroupManagementFauxapiException('unable to resync', response['message'])
+
         return response
 
     # squidguard functions

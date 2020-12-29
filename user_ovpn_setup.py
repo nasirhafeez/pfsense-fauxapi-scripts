@@ -15,4 +15,7 @@ UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecre
 
 user = UGMF.add_ovpn_csc(sys.argv[1], sys.argv[2], sys.argv[3])
 
+resync = UGMF.ovpn_resync()
+
 pprint.pprint(user)
+pprint.pprint(resync)
