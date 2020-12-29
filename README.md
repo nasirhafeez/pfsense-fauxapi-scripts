@@ -12,3 +12,11 @@ pip3 install python-dotenv
 To install Faux API on pfSense use the procedure given [here](https://github.com/ndejong/pfsense_fauxapi#installation).
 
 Copy and rename the `.env.example` file to `.env` and set the values of the given environment variables in it.
+
+The `user_ovpn_setup.py` script relies on API Action `function_call`. It should be setup as follows:
+
+```
+cp /etc/fauxapi/pfsense_function_calls.sample.txt /etc/fauxapi/pfsense_function_calls.txt
+```
+
+Edit `/etc/fauxapi/pfsense_function_calls.txt` in a text editor and uncomment the line `openvpn.inc:function openvpn_resync_csc_all()`.
