@@ -296,7 +296,7 @@ class UserGroupManagementFauxapi():
             'urls': '',
             'expressions': '',
             'redirect_mode': 'rmod_ext_mov',
-            'redirect': 'http://api.kinetworking.com/blocked?JNI_URL=%u&amp;JNI_SRCIP=%a',
+            'redirect': '	http://api.kinetworking.com/blocked?JNI_URL=%u&JNI_SRCIP=%a',
             'description': '',
             'enablelog': 'on',
         }
