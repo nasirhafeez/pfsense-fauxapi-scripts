@@ -9,9 +9,9 @@ UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecre
 # 
 # It will be run with 2 command line arguments: group_acl_name source_ip
 #
-# python3 add_sg_groupacl.py group_acl_name source_ip
+# python3 add_sg_groupacl.py group_acl_name source_ip rules
 # 
 
-user = UGMF.add_sg_groupacl(sys.argv[1], sys.argv[2])
+user = UGMF.add_sg_groupacl(sys.argv[1], sys.argv[2], sys.argv[3])
 
 pprint.pprint(user)
