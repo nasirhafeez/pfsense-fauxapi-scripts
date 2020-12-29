@@ -13,17 +13,17 @@ UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecre
 # python3 user_ovpn_setup.py username ip subnet
 # 
 
-user = UGMF.function_call({
-        'function': 'openvpn_resync_csc_all'
-    }
-    )
-
-
-# print(json.dumps(
-#     FauxapiLib.function_call({
+# user = UGMF.function_call({
 #         'function': 'openvpn_resync_csc_all'
 #     }
-# )))
+#     )
 
 
-pprint.pprint(user)
+print(json.dumps(
+    UGMF.function_call({
+        'function': 'discover_last_backup'
+    }
+)))
+
+
+# pprint.pprint(user)
