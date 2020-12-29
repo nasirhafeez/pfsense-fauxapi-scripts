@@ -15,7 +15,8 @@ UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecre
 
 user = UGMF.function_call({
         'function': 'openvpn_resync_csc_all'
-    })
+    }
+    )
 
 
 # print(json.dumps(
