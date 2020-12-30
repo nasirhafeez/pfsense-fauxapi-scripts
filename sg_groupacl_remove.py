@@ -9,7 +9,7 @@ UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecre
 # 
 # It will be run with 1 command line argument: group_acl_name
 #
-# python3 remove_sg_groupacl.py group_acl_name
+# python3 sg_groupacl_remove.py group_acl_name
 # 
 
 user = UGMF.remove_sg_groupacl(sys.argv[1])

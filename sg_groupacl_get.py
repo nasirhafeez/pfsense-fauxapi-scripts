@@ -9,7 +9,7 @@ UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecre
 # 
 # It will be run without any command line arguments:
 #
-# python3 get_sg_groupacl.py
+# python3 sg_groupacl_get.py
 # 
 
 user = UGMF.get_sg_groupacl()

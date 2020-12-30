@@ -9,7 +9,7 @@ UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecre
 # 
 # It will be run with 1 command line argument: category
 #
-# python3 remove_sg_category.py category
+# python3 sg_category_remove.py category
 # 
 
 user = UGMF.remove_sg_category(sys.argv[1])

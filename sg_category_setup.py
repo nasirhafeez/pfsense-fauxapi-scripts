@@ -9,7 +9,7 @@ UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecre
 # 
 # It will be run with 2 command line argument: category_name domain_list
 #
-# python3 add_sg_category.py category "domain list e.g cnn.com github.com twitter.com"
+# python3 sg_category_setup.py category "domain list e.g cnn.com github.com twitter.com"
 # 
 
 user = UGMF.add_sg_category(sys.argv[1], sys.argv[2])
