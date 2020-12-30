@@ -337,9 +337,9 @@ class UserGroupManagementFauxapi():
 
         cat_found = False
         for cat_index, cat in enumerate(self.system_config['installedpackages']['squidguarddest']['config']):
-            if cat_name['name'] == name:
-                alias_found = True
-                if cat_name['domains'] != user['domains']:
+            if cat['name'] == name:
+                cat_found = True
+                if cat['domains'] != user['domains']:
                     self.system_config['installedpackages']['squidguarddest']['config'][index] = user
                     print("updated successfully")
 
