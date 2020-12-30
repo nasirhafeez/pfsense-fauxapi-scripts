@@ -342,8 +342,8 @@ class UserGroupManagementFauxapi():
                     cat_found = True
                     self.system_config['installedpackages']['squidguarddest']['config'][c_index] = user
 
-        if cat_found is False:
-            raise UserGroupManagementFauxapiException('no update required', c)
+                if cat_found is False:
+                    raise UserGroupManagementFauxapiException('no update required', c)
 
         response = self.FauxapiLib.config_set(self.system_config)
         if response['message'] != 'ok':
