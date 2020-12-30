@@ -357,8 +357,8 @@ class UserGroupManagementFauxapi():
         # patch_sg_category['installedpackages']['squidguarddest']['config'].append(user)
 
         # response = self.FauxapiLib.config_patch(patch_sg_category)
-        if response['message'] != 'ok':
-            raise UserGroupManagementFauxapiException('unable to update squidguard category', response['message'])
+        # if response['message'] != 'ok':
+        #     raise UserGroupManagementFauxapiException('unable to update squidguard category', response['message'])
 
         return user
 
