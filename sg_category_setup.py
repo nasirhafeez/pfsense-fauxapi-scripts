@@ -5,7 +5,7 @@ UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecre
 
 ######################### SquidGuard Category Setup #########################
 #
-# This script will setup or modify a category in SquidGuard
+# This script will setup a category in SquidGuard
 # 
 # It will be run with 2 command line argument: category_name domain_list
 #

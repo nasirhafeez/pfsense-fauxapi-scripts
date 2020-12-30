@@ -317,6 +317,51 @@ class UserGroupManagementFauxapi():
 
         return user
 
+    def update_sg_category(self, cat_name, domain_list):
+        self._reload_system_config()
+
+        cat_index, cat = self._get_entity_3('installedpackages', 'squidguarddest', 'config', 'name', cat_name)
+        if cat_index is None:
+            raise UserGroupManagementFauxapiException('category does not exists', cat)
+
+        user = {
+            'name': cat_name,
+            'domains': domain_list,
+            'urls': '',
+            'expressions': '',
+            'redirect_mode': 'rmod_ext_mov',
+            'redirect': 'http://api.kinetworking.com/blocked?JNI_URL=%u&JNI_SRCIP=%a',
+            'description': '',
+            'enablelog': 'on',
+        }
+
+        cat_found = False
+        for cat_index, cat in enumerate(self.system_config['installedpackages']['squidguarddest']['config']):
+            if cat_name['name'] == name:
+                alias_found = True
+                if cat_name['domains'] != user['domains']:
+                    self.system_config['installedpackages']['squidguarddest']['config'][index] = user
+                    print("updated successfully")
+
+        # if alias_found is False:
+        #     self.system_config['aliases']['alias'].append(alias_data)
+
+        # patch_sg_category = {
+        #     'installedpackages': {
+        #         'squidguarddest': {
+        #             'config': self.system_config['installedpackages']['squidguarddest']['config']
+        #         }
+        #     }
+        # }
+
+        # patch_sg_category['installedpackages']['squidguarddest']['config'].append(user)
+
+        # response = self.FauxapiLib.config_patch(patch_sg_category)
+        if response['message'] != 'ok':
+            raise UserGroupManagementFauxapiException('unable to update squidguard category', response['message'])
+
+        return user
+
     def add_sg_groupacl(self, gacl_name, source_ip, rules):
         self._reload_system_config()
 
