@@ -341,7 +341,6 @@ class UserGroupManagementFauxapi():
                 cat_found = True
                 if c['domains'] != user['domains']:
                     self.system_config['installedpackages']['squidguarddest']['config'][c_index] = user
-                    print("updated successfully")
 
         # if alias_found is False:
         #     self.system_config['aliases']['alias'].append(alias_data)
@@ -356,9 +355,9 @@ class UserGroupManagementFauxapi():
 
         # patch_sg_category['installedpackages']['squidguarddest']['config'].append(user)
 
-        # response = self.FauxapiLib.config_patch(patch_sg_category)
-        # if response['message'] != 'ok':
-        #     raise UserGroupManagementFauxapiException('unable to update squidguard category', response['message'])
+        response = self.FauxapiLib.config_set(self.system_config)
+        if response['message'] != 'ok':
+            raise UserGroupManagementFauxapiException('unable to update squidguard category', response['message'])
 
         return user
 
