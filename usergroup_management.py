@@ -342,7 +342,7 @@ class UserGroupManagementFauxapi():
                 if c['domains'] != user['domains']:
                     self.system_config['installedpackages']['squidguarddest']['config'][c_index] = user
 
-        if alias_found is False:
+        if cat_found is False:
             raise UserGroupManagementFauxapiException('no update required', cat)
 
         response = self.FauxapiLib.config_set(self.system_config)
