@@ -545,6 +545,8 @@ class UserGroupManagementFauxapi():
         if response['message'] != 'ok':
             raise UserGroupManagementFauxapiException('unable to add cron', response['message'])
 
+        return conf
+
     # group functions
     # =========================================================================
 
