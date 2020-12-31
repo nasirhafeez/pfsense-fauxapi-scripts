@@ -475,31 +475,22 @@ class UserGroupManagementFauxapi():
     def delete_av_cron(self):
         self._reload_system_config()
 
+        patch_av_cron = {
+            'cron': {
+                'item': self.system_config['cron']['item']
+            }
+        }
+
         for c_index, c in enumerate(self.system_config['cron']['item']):
             if ((c['who'] == 'clamav') AND (c['command'] == '/usr/local/bin/freshclam --config-file=/usr/local/etc/freshclam.conf')):
-                print('cron index: ', c_index)
-                print(c)
-        # else:
-        #     raise UserGroupManagementFauxapiException('cron job not found')
+                del(patch_av_cron['cron']['item'][c_index])
+                print('item deleted')
 
-        # cron_index, cron = self._get_entity_3('installedpackages', 'squidguardacl', 'config', 'name', gacl_name)
-        # if gacl_index is None:
-        #     raise UserGroupManagementFauxapiException('group acl does not exist', gacl)
+        response = self.FauxapiLib.config_patch(patch_av_cron)
+        if response['message'] != 'ok':
+            raise UserGroupManagementFauxapiException('unable to remove category', response['message'])
 
-        # patch_sg_groupacl = {
-        #     'installedpackages': {
-        #         'squidguardacl': {
-        #             'config': self.system_config['installedpackages']['squidguardacl']['config']
-        #         }
-        #     }
-        # }
-        # del(patch_sg_groupacl['installedpackages']['squidguardacl']['config'][gacl_index])
-
-        # response = self.FauxapiLib.config_patch(patch_sg_groupacl)
-        # if response['message'] != 'ok':
-        #     raise UserGroupManagementFauxapiException('unable to remove category', response['message'])
-
-        # return gacl
+        return c
 
     def enable_av(self):
         self._reload_system_config()
