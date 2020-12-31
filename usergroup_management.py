@@ -475,7 +475,11 @@ class UserGroupManagementFauxapi():
     def delete_av_cron(self):
         self._reload_system_config()
 
+        print('starting for')
+        count = 0
         for c_index, c in enumerate(self.system_config['cron']['item']):
+            print('count: ', count)
+            count = count + 1
             if c['who'] == 'clamav':
                 print('cron index: ', c_index)
                 print(c)
