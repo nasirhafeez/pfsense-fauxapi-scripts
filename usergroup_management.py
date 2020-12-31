@@ -443,15 +443,32 @@ class UserGroupManagementFauxapi():
     def disable_av(self):
         self._reload_system_config()
 
-        cat_found = False
+        conf = {
+            'enable': '',
+            'client_info': 'both',
+            'enable_advanced': 'disabled',
+            'clamav_url': '',
+            'clamav_safebrowsing': '',
+            'clamav_disable_stream_scanning': '',
+            'clamav_update': '6',
+            'clamav_dbregion': 'uk',
+            'clamav_dbservers': '',
+            'raw_squidclamav_conf': '',
+            'raw_cicap_conf': '',
+            'raw_cicap_magic': '',
+            'raw_freshclam_conf': '',
+            'raw_clamd_conf': '',
+        }
+
         for av_index, av in enumerate(self.system_config['installedpackages']['squidantivirus']['config']):
-            if av['enable'] == 'on':
-                print('anti virus is enabled')
-                # if c['domains'] != user['domains']:
-                #     cat_found = True
-                #     self.system_config['installedpackages']['squidguarddest']['config'][c_index] = user
-                # if cat_found is False:
-                #     raise UserGroupManagementFauxapiException('no update required')
+            if av['enable'] != 'on':
+                raise UserGroupManagementFauxapiException('anti-virus is already disabled')
+            else:
+                self.system_config['installedpackages']['squidantivirus']['config'][av_index] = conf
+
+        response = self.FauxapiLib.config_set(self.system_config)
+        if response['message'] != 'ok':
+            raise UserGroupManagementFauxapiException('unable to disable anti-virus', response['message'])
 
     def enable_av(self):
         self._reload_system_config()
