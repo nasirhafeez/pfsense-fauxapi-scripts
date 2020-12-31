@@ -437,6 +437,31 @@ class UserGroupManagementFauxapi():
 
         return gacl
 
+    # clamav functions
+    # =========================================================================
+
+    def disable_av(self):
+        self._reload_system_config()
+
+        cat_found = False
+        for av_index, av in enumerate(self.system_config['installedpackages']['squidantivirus']['config']):
+            if av['enable'] == 'on':
+                print('anti virus is enabled')
+                # if c['domains'] != user['domains']:
+                #     cat_found = True
+                #     self.system_config['installedpackages']['squidguarddest']['config'][c_index] = user
+                # if cat_found is False:
+                #     raise UserGroupManagementFauxapiException('no update required')
+
+    def enable_av(self):
+        self._reload_system_config()
+
+        response_data = {}
+        for cat in self.system_config['installedpackages']['squidguarddest']['config']:
+            response_data[cat['name']] = cat
+            del(response_data[cat['name']]['name'])
+        return response_data
+
     # group functions
     # =========================================================================
 
