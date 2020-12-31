@@ -516,6 +516,35 @@ class UserGroupManagementFauxapi():
 
         return conf
 
+    def add_av_cron(self):
+        self._reload_system_config()
+
+        for c_index, c in enumerate(self.system_config['cron']['item']):
+            if ((c['who'] == 'clamav') and (c['command'] == '/usr/local/bin/freshclam --config-file=/usr/local/etc/freshclam.conf')):
+                raise UserGroupManagementFauxapiException('cron job already exists', response['message'])
+
+        conf = {
+            'minute': '7',
+            'hour': '*/6',
+            'mday': '*',
+            'month': '*',
+            'wday': '*',
+            'who': 'clamav',
+            'command': '/usr/local/bin/freshclam --config-file=/usr/local/etc/freshclam.conf',
+        }
+
+        patch_av_cron = {
+            'cron': {
+                'item': self.system_config['cron']['item']
+            }
+        }
+
+        patch_av_cron['cron']['item'].append(conf)
+
+        response = self.FauxapiLib.config_patch(patch_av_cron)
+        if response['message'] != 'ok':
+            raise UserGroupManagementFauxapiException('unable to add cron', response['message'])
+
     # group functions
     # =========================================================================
 
