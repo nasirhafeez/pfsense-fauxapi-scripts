@@ -483,8 +483,8 @@ class UserGroupManagementFauxapi():
             if c['who'] == 'clamav':
                 print('cron index: ', c_index)
                 print(c)
-            else:
-                raise UserGroupManagementFauxapiException('cron job not found')
+        # else:
+        #     raise UserGroupManagementFauxapiException('cron job not found')
 
         # cron_index, cron = self._get_entity_3('installedpackages', 'squidguardacl', 'config', 'name', gacl_name)
         # if gacl_index is None:
