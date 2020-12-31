@@ -492,6 +492,30 @@ class UserGroupManagementFauxapi():
     def enable_av(self):
         self._reload_system_config()
 
+        conf = {
+            'enable': 'on',
+            'client_info': 'both',
+            'enable_advanced': 'disabled',
+            'clamav_url': '',
+            'clamav_safebrowsing': '',
+            'clamav_disable_stream_scanning': '',
+            'clamav_update': '6',
+            'clamav_dbregion': 'uk',
+            'clamav_dbservers': '',
+        }
+
+        for av_index, av in enumerate(self.system_config['installedpackages']['squidantivirus']['config']):
+            if av['enable'] == 'on':
+                raise UserGroupManagementFauxapiException('anti-virus is already enabled')
+            else:
+                self.system_config['installedpackages']['squidantivirus']['config'][av_index] = conf
+
+        response = self.FauxapiLib.config_set(self.system_config)
+        if response['message'] != 'ok':
+            raise UserGroupManagementFauxapiException('unable to enable anti-virus', response['message'])
+
+        return conf
+
     # group functions
     # =========================================================================
 
