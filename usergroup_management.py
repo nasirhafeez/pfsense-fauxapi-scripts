@@ -476,7 +476,7 @@ class UserGroupManagementFauxapi():
         self._reload_system_config()
 
         for c_index, c in enumerate(self.system_config['cron']['item']):
-            if c['command'] == '/usr/local/bin/freshclam --config-file=/usr/local/etc/freshclam.conf':
+            if c['who'] == 'clamav':
                 print('cron index: ', c_index)
                 print(c)
             else:
