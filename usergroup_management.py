@@ -484,13 +484,10 @@ class UserGroupManagementFauxapi():
         for c_index, c in enumerate(self.system_config['cron']['item']):
             if ((c['who'] == 'clamav') and (c['command'] == '/usr/local/bin/freshclam --config-file=/usr/local/etc/freshclam.conf')):
                 del(patch_av_cron['cron']['item'][c_index])
-                print('item deleted')
 
         response = self.FauxapiLib.config_patch(patch_av_cron)
         if response['message'] != 'ok':
             raise UserGroupManagementFauxapiException('unable to remove category', response['message'])
-
-        return c
 
     def enable_av(self):
         self._reload_system_config()

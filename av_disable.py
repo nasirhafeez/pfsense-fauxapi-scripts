@@ -12,8 +12,8 @@ UGMF = UserGroupManagementFauxapi(fauxapi_host, fauxapi_apikey, fauxapi_apisecre
 # python3 av_disable.py
 # 
 
-#step1 = UGMF.disable_av()
+step1 = UGMF.disable_av()
 step2 = UGMF.delete_av_cron()
 
-#pprint.pprint(step1)
+pprint.pprint(step1)
 pprint.pprint(step2)
