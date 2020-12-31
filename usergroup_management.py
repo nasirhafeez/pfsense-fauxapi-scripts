@@ -481,13 +481,18 @@ class UserGroupManagementFauxapi():
             }
         }
 
+        cron_entry = 0
+
         for c_index, c in enumerate(self.system_config['cron']['item']):
             if ((c['who'] == 'clamav') and (c['command'] == '/usr/local/bin/freshclam --config-file=/usr/local/etc/freshclam.conf')):
+                cron_entry = c
                 del(patch_av_cron['cron']['item'][c_index])
 
         response = self.FauxapiLib.config_patch(patch_av_cron)
         if response['message'] != 'ok':
             raise UserGroupManagementFauxapiException('unable to remove category', response['message'])
+
+        return cron_entry
 
     def enable_av(self):
         self._reload_system_config()
@@ -524,7 +529,7 @@ class UserGroupManagementFauxapi():
                 raise UserGroupManagementFauxapiException('cron job already exists', response['message'])
 
         conf = {
-            'minute': '7',
+            'minute': '0',
             'hour': '*/6',
             'mday': '*',
             'month': '*',
