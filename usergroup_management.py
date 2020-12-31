@@ -475,10 +475,10 @@ class UserGroupManagementFauxapi():
     def delete_av_cron(self):
         self._reload_system_config()
 
-        for cron_index, cron in enumerate(self.system_config['cron']['item']):
-            if cron['command'] == '/usr/local/bin/freshclam --config-file=/usr/local/etc/freshclam.conf':
-                print('cron index: ', cron_index)
-                print(cron)
+        for c_index, c in enumerate(self.system_config['cron']['item']):
+            if c['command'] == '/usr/local/bin/freshclam --config-file=/usr/local/etc/freshclam.conf':
+                print('cron index: ', c_index)
+                print(c)
             else:
                 raise UserGroupManagementFauxapiException('cron job not found')
 
