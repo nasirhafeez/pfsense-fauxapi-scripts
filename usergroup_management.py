@@ -494,7 +494,7 @@ class UserGroupManagementFauxapi():
 
         return cron_entry
 
-    def enable_av(self):
+    def enable_av(self, update='6', region='uk'):
         self._reload_system_config()
 
         conf = {
@@ -504,8 +504,8 @@ class UserGroupManagementFauxapi():
             'clamav_url': '',
             'clamav_safebrowsing': '',
             'clamav_disable_stream_scanning': '',
-            'clamav_update': '6',
-            'clamav_dbregion': 'uk',
+            'clamav_update': update,
+            'clamav_dbregion': region,
             'clamav_dbservers': '',
         }
 
