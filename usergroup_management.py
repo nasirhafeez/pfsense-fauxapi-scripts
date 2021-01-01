@@ -497,6 +497,35 @@ class UserGroupManagementFauxapi():
     def enable_av(self, update='6', region='uk'):
         self._reload_system_config()
 
+        # Valid values for clamav_dbregion are:
+        #
+        # None: 
+        # Australia: au
+        # Europe: europe
+        # Canada: ca
+        # China: cn
+        # Indonesia: id
+        # Japan: jp
+        # Korea: kr
+        # Malaysia: ml
+        # Russia: ru
+        # South Africa: sa
+        # Taiwan: tw
+        # United Kingdom: uk
+        # United States: us
+        #
+        # Valid values for clamav_update are:
+        #
+        # never: 
+        # every 1 hour: 1
+        # every 2 hours: 2
+        # every 3 hours: 3
+        # every 4 hours: 4
+        # every 6 hours: 6
+        # every 8 hours: 8
+        # every 12 hours: 12
+        # every 24 hours: 24
+
         conf = {
             'enable': 'on',
             'client_info': 'both',
